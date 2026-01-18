@@ -1,0 +1,80 @@
+clear, clc
+format shortG
+
+% Random Initial Value Problem (RIVP)
+% X'(t) = a*(b-X(t)); X(0) = X0
+% t € [0, 5]
+
+a=0;
+b = 5;
+N = 20;
+
+
+% Simulations
+sims = 600;
+rv = unifrnd(0,1,[sims 1]);
+X_sol_sym = zeros(N+1, sims);
+h = (b - a) / N;
+syms X(t)
+a_p=1;
+b_p=1;
+ode_sym = diff(X,t) == a_p.*(b_p-X);
+figure;
+hold on;
+for i =1:sims
+    tic;
+    t = a:h:b;
+    cond = X(0) == rv(i);
+    X_sol_sym(:,i) = double(subs(dsolve(ode_sym, cond),t));
+    plot(t, X_sol_sym(:,i))
+    time_elapsed_for_sym(i) = toc;
+end
+grid on;
+% legend;
+xlabel('Time (t)');
+ylabel('X(t)');
+title('MonteCarlo Solution for RIVP with different X0');
+
+% Expected Value and Variance
+mean_X = mean(X_sol_sym, 2);
+var_X = var(X_sol_sym, 0, 2);
+
+% Results
+figure;
+t1 = a:h:b;
+plot(t1, mean_X, 'b-', 'LineWidth', 2);
+hold on;
+plot(t1, mean_X + sqrt(var_X), 'g--', 'LineWidth', 1);
+plot(t1, mean_X - sqrt(var_X), 'r--', 'LineWidth', 1);
+grid on;
+xlabel('Time (t)');
+ylabel('X(t)');
+title('Mean and Variance of RIVP Solution');
+legend('Mean', 'Mean + Std', 'Mean - Std');
+
+
+%% NUMERICAL SOLUTION (JUST FOR FUN)
+X_sol = zeros(N+1,sims);
+t_sol = zeros(N+1,sims);
+
+figure;
+hold on;
+for i=1:sims
+    tic;
+    [t_sol, X_sol(:,i)] = Euler('logitEqn', a, b, N, rv(i));
+    plot(t_sol, X_sol(:,i));
+    time_elapsed_for_num(i) = toc;
+end
+grid on;
+xlabel('Time (t)');
+ylabel('X(t)');
+title('PVIA Numerical Solution for Different Initial Conditions');
+
+
+% Time elapsed execution plots
+figure;
+bar([mean(time_elapsed_for_sym); mean(time_elapsed_for_num)]);
+xlabel('Simulation');
+ylabel('Time (s)');
+title('Mean Time Elapsed for Each Simulation');
+xticklabels({'Symbolic','Numerical'});
