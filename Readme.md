@@ -19,8 +19,21 @@ Welcome to the repository for my Master's studies in Mathematical Engineering an
 
 ### 2. Term 2
 
-To be finished
+- **Course 1:** [Applied Numerical Methods II](/Term%202/Applied%20Numerical%20Methods%20II/)
+  
+- **Course 2:** [Stochastic Differential Equations](Term%202/Stochastic%20Differential%20Equations)
 
+- **Course 3:** [Derivatives and Portfolios in Finance](Term%202/Derivatives%20and%20Portfolios%20in%20Finance)
+
+
+### 3. Term 3
+
+To be done
+
+
+### 4. Term 4
+
+To be done
 
 ## How to Use
 
