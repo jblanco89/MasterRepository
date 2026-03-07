@@ -1,0 +1,152 @@
+% Style redefined by Jan Koprnicky, Technical University of Liberec 2019
+% 2019-11-21
+% - adding required package matlab-prettifier
+% - adding special Czech characters in lstset from following link: 
+% https://stackoverflow.com/questions/1116266/listings-in-latex-with-utf-8-or-at-least-german-umlauts 
+% - changing lst-style into Matlab-editor
+ 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{matlabINF}
+
+\RequirePackage{listings}
+\RequirePackage{hyperref}
+\RequirePackage{color}
+\RequirePackage{matlab-prettifier}
+
+
+\newcommand{\maxwidth}[1]{\ifdim\linewidth>#1 #1\else\linewidth\fi}
+\newcommand{\mlcell}[1]{\lstinline[style=Matlab-editor]$#1$}
+
+\definecolor{output}{gray}{0.5}
+
+
+% Unicode character conversions
+\DeclareUnicodeCharacter{B0}{\ensuremath{^\circ}}
+\DeclareUnicodeCharacter{21B5}{\ensuremath{\hookleftarrow}}
+
+
+% Paragraph indentation
+\setlength{\parindent}{0pt}
+
+
+% Hyperlink style
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+urlcolor=blue
+}
+
+% Listings environment styles for MATLAB code and output
+\lstset{
+extendedchars=\true,
+inputencoding=utf8
+}
+
+\lstnewenvironment{matlabcode}{
+\lstset{
+style=Matlab-editor,
+frame=single,
+framesep=0.75em,
+xleftmargin=1em,
+breaklines=true,
+prebreak=\ldots,
+breakatwhitespace=true,
+%literate={-}{-}1 {+}{+}2 {\_}{\_}2 {\#}{\#}2 {\%}{\%}2 {\&}{\&}2 {<}{<}2 {=}{=}2 {>}{>}2 {\^}{\textasciicircum{}}2
+literate=%
+    {á}{{\'a}}1
+    {č}{{\v{c}}}1
+    {ď}{{\v{d}}}1
+    {é}{{\'e}}1
+    {ě}{{\v{e}}}1
+    {í}{{\'i}}1
+    {ň}{{\v{n}}}1
+    {ó}{{\'o}}1
+    {ř}{{\v{r}}}1
+    {š}{{\v{s}}}1
+    {ť}{{\v{t}}}1
+    {ú}{{\'u}}1
+    {ů}{{\r{u}}}1
+    {ý}{{\'y}}1
+    {ž}{{\v{z}}}1
+    {Á}{{\'A}}1
+    {Č}{{\v{C}}}1
+    {Ď}{{\v{D}}}1
+    {É}{{\'E}}1
+    {Ě}{{\v{E}}}1
+    {Í}{{\'I}}1
+    {Ň}{{\v{N}}}1
+    {Ó}{{\'O}}1
+    {Ř}{{\v{R}}}1
+    {Š}{{\v{S}}}1
+    {Ť}{{\v{T}}}1
+    {Ú}{{\'U}}1
+    {Ů}{{\r{U}}}1
+    {Ý}{{\'Y}}1
+    {Ž}{{\v{Z}}}1
+}
+}{}
+
+
+
+\lstnewenvironment{matlaboutput}{
+\lstset{
+style=Matlab-editor
+}
+}{}
+
+\lstnewenvironment{matlabsymbolicoutput}{
+\lstset{
+style=Matlab-editor,
+mathescape=true
+}
+}{}
+
+\newenvironment{matlabtableoutput}[1]{
+{\color{output}
+\hspace*{1.25em}#1
+}
+}{}
+
+
+% Table of Contents style
+\newcounter{multititle}
+\newcommand{\matlabmultipletitles}{\setcounter{multititle}{1}}
+
+\newcounter{hastoc}
+\newcommand{\matlabhastoc}{\setcounter{hastoc}{1}}
+
+\newcommand{\matlabtitle}[1]{
+\ifnum\value{multititle}>0
+  \ifnum\value{hastoc}>0
+    \addcontentsline{toc}{section}{#1}
+  \fi
+\fi
+\section*{#1}
+}
+
+\newcommand{\matlabheading}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsection}{#1}
+\fi
+\subsection*{#1}
+}
+
+\newcommand{\matlabheadingtwo}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsubsection}{#1}
+\fi
+\subsubsection*{#1}
+}
+
+\newcommand{\matlabheadingthree}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{paragraph}{#1}
+\fi
+\paragraph*{#1}
+}
+
+\newcommand{\matlabtableofcontents}[1]{
+\renewcommand{\contentsname}{#1}
+\tableofcontents
+}
+ 

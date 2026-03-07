@@ -1,0 +1,227 @@
+function [u_optimal, min_area, alpha_opt] = min_rev_surface(n, max_iter, tol, integral_method, t_opt_method)
+    % Marcando parámetros de entrada
+    if nargin < 1, n = 100; end        % número de puntos
+    if nargin < 2, max_iter = 1000; end % máximo de iteraciones
+    if nargin < 3, tol = 1e-4; end % tolerancia por defecto
+    if nargin < 4, integral_method = 'trapezium'; end % Método del trapecio por defecto
+    if nargin < 5, t_opt_method = 'fibo';  end % método para encontra t óptimo
+
+    % Inicialización
+    x = linspace(0, 1, n+1);
+    u = ones(1, n+1);  % línea recta para y=1
+    iter = 0;
+    prev_area = 0;
+    % Método de optimización sin restricciones (método del gradiente con t variable)
+    % Se espera implementarlo con otros métodos (Newton y Cuasi-Newton)
+    if strcmp(integral_method, 'trapezium')
+        while iter < max_iter
+                grad = trapezium_gradient(u, n);
+
+                % establecemos función de línea para búsqueda de alpha
+                f = @(alpha) trapezium(u - alpha .* grad, n); 
+                df = @(alpha) -sum(grad .* grad); %Sumatoria del vector gradiente  
+
+                % Llamando a la función Fibonacci o Rectas Inexactas para búsqueda de alpha (t) óptimo
+                if strcmp(t_opt_method, 'fibo')
+                    [alpha, ~] = fibo(f, df, 0, 1, tol);
+                elseif strcmp(t_opt_method, 'dico')
+                    [alpha, ~] = budi(f, df, 0, 1, tol);
+                else
+                    [alpha, ~] = rein(f, df, 0,tol);
+                end
+                % Actualizar u a excepción de los puntos u(a) y u(b) que deben ser 1
+                u_new = u - alpha .* grad;
+                u(2:end-1) = u_new(2:end-1);
+
+                iter  = iter +1;
+                new_area = trapezium(u, n);
+
+                if iter > 1 && abs(new_area - prev_area) < tol
+                    break;
+                end
+                prev_area = new_area;
+
+                % if mod(iter, 10) == 0
+                %     fprintf('Iteración %d | Área = %f | Alpha = %f | norm_grad = %f\n', iter, new_area, alpha, norm(grad));
+                % end
+        end
+            u_optimal = u;
+            min_area = trapezium(u_optimal, n);
+            alpha_opt = alpha;
+            % Graficamos
+            plot_result(x, u_optimal, integral_method, t_opt_method);
+    else
+        while iter < max_iter
+        grad = simpson_gradient(u, n);
+
+            % establecemos función de línea para búsqueda de alpha
+            f = @(alpha) simpson13(u - alpha .* grad, n); 
+            df = @(alpha) -sum(grad .* grad); %Sumatoria del vector gradiente  
+
+            % Llamando a la función Fibonacci o Rectas Inexactas para búsqueda de alpha (t) óptimo
+            if strcmp(t_opt_method, 'fibo')
+                [alpha, ~] = fibo(f, df, 0, 1, tol);
+            elseif strcmp(t_opt_method, 'dico')
+                [alpha, ~] = budi(f, df, 0, 1, tol);
+                % alpha = 0.00001;
+            else
+                [alpha, ~] = rein(f, df, 0,tol);
+            end
+            % Actualizar u a excepción de los puntos u(a) y u(b) que deben ser 1
+            u_new = u - alpha .* grad;
+            u(2:end-1) = u_new(2:end-1);
+
+            iter  = iter +1;
+            new_area = simpson13(u, n);
+
+            if iter > 0 && abs(new_area - prev_area) < tol
+                break;
+            end
+            prev_area = new_area;
+
+            % if mod(iter, 10) == 0
+                % fprintf('Iteración %d | Área = %f | Alpha = %f | norm_grad = %f\n', iter, new_area, alpha, norm(grad));
+            % end
+        end
+        u_optimal = u;
+        min_area = simpson13(u_optimal, n);
+        alpha_opt = alpha;
+        % Graficamos
+        plot_result(x, u_optimal, integral_method, t_opt_method);
+    end
+end
+
+% Gradiente
+function grad = trapezium_gradient(u, n)
+    grad = zeros(1, n+1);
+    grad(1) = (1/(2*n)) * (sqrt(1 + n^2*(u(2) - u(1))^2) - ... 
+               (n^2*(u(2) - u(1))*(u(2) + u(1)))/sqrt(1 + n^2*(u(2) - u(1))^2));
+
+    % k = 1,2,...,n-1
+    for k = 2:n
+        grad(k) = (1/(2*n)) * (sqrt(1 + n^2*(u(k) - u(k-1))^2) + ...
+                  (n^2*(u(k) - u(k-1))*(u(k) + u(k-1)))/sqrt(1 + n^2*(u(k) - u(k-1))^2) + ...
+                  sqrt(1 + n^2*(u(k+1) - u(k))^2) - ...
+                  (n^2*(u(k+1) - u(k))*(u(k+1) + u(k)))/sqrt(1 + n^2*(u(k+1) - u(k))^2));
+    end
+
+    % k = n
+    grad(n+1) = (1/(2*n)) * (sqrt(1 + n^2*(u(n+1) - u(n))^2) + ... 
+                (n^2*(u(n+1) - u(n))*(u(n+1) + u(n)))/sqrt(1 + n^2*(u(n+1) - u(n))^2));
+end
+
+% Área bajo la curva método del trapezio
+function area = trapezium(u, n)
+    area = 0;
+    for j = 1:n
+        Tj = (u(j) + u(j+1)) * sqrt(1 + (n+1)^2 * (u(j+1) - u(j))^2) / (2*(n+1));
+        area = area + Tj;
+    end
+end
+
+function grad = simpson_gradient(u, n)
+    grad = zeros(1, n+1);
+    
+    % g0 (primer punto, solo contribución inicial)
+    grad(1) = (1/(6*n))*(sqrt(1 + n^2*(u(2) - u(1))^2) - ...
+              u(1)*n^2*(u(2) - u(1))/sqrt(1 + n^2*(u(2) - u(1))^2));
+    
+    % Para puntos internos (k = 2 hasta n)
+    % Cada punto recibe contribución de tres términos Sj consecutivos
+    for k = 2:n
+        % Contribución como punto final del primer término
+        term1 = (1/(6*n))*(sqrt(1 + n^2*(u(k) - u(k-1))^2) + ...
+                5*sqrt(1 + n^2*(u(k+1) - u(k))^2));
+        
+        % Contribución del término con diferencia hacia adelante
+        term2 = (1/(6*n))*(n^2*(u(k+1) - u(k))* ...
+                (u(k+1) - 0)/sqrt(1 + n^2*(u(k+1) - u(k))^2));
+        
+        % Contribución del término con diferencia hacia atrás
+        term3 = (1/(6*n))*(n^2*(u(k) - u(k-1))* ...
+                (0 - u(k-1))/sqrt(1 + n^2*(u(k) - u(k-1))^2));
+        
+        grad(k) = term1 + term2 + term3;
+    end
+    
+    % gn (último punto, solo contribución final)
+    grad(n+1) = (1/(6*n))*(sqrt(1 + n^2*(u(n+1) - u(n))^2) + ...
+                4*u(n)*n^2*(u(n+1) - u(n))/sqrt(1 + n^2*(u(n+1) - u(n))^2));
+    
+    return;
+end
+
+% Función para calcular el área usando Simpson
+function area = simpson13(u, n)
+   area = 0;
+   for j = 0:n-2
+       fj = u(j+1)*sqrt(1 + n^2*(u(j+2) - u(j+1))^2);
+       fj1 = 4*u(j+2)*sqrt(1 + n^2*(u(j+3) - u(j+2))^2);
+       fj2 = u(j+3)*sqrt(1 + n^2*(u(j+3) - u(j+2))^2);
+       Sj = (1/(6*n))*(fj + fj1 + fj2);
+       area = area + Sj;
+   end
+end
+
+
+% Graficando
+% function plot_result(x, u)
+%     figure;
+%     subplot(1,2,1)
+%     plot(x, u, 'b-', 'LineWidth', 2);
+%     hold on;
+%     plot([0,1], [1,1], 'r--');  % Línea recta original
+%     grid on;
+%     title('Curva óptima vs Línea recta');
+%     xlabel('x');
+%     ylabel('u(x)');
+%     legend('Curva óptima', 'Línea recta');
+% 
+%     % Graficar superficie de revolución
+%     subplot(1,2,2)
+%     theta = linspace(0, 2*pi, 50);
+%     [X, T] = meshgrid(x, theta);
+%     U = repmat(u, length(theta), 1);
+%     Y = U .* cos(T);
+%     Z = U .* sin(T);
+% 
+%     surf(X, Y, Z);
+%     title('Superficie de revolución');
+%     % axis equal;
+%     grid on;
+% 
+%     subplot(1,2,1)
+%     axis equal;
+%     subplot(1,2,2)
+%     axis equal;
+% end
+
+function plot_result(x, u, integral_method, t_opt_method)
+    figure;
+    subplot(1,2,1)
+    plot(x, u, 'b-', 'LineWidth', 2);
+    hold on;
+    plot([0,1], [1,1], 'r--');  % Línea recta original
+    grid on;
+    title(['Curva óptima ' integral_method '  con  ' length(x) - 1 ' puntos y t óptimo con  ' t_opt_method ]); 
+    xlabel('x');
+    ylabel('u(x)');
+    legend('Curva óptima', 'Línea recta');
+    % Graficar superficie de revolución
+    subplot(1,2,2)
+    theta = linspace(0, 2*pi, 50);
+    [X, T] = meshgrid(x, theta);
+    U = repmat(u, length(theta), 1);
+    Y = U .* cos(T);
+    Z = U .* sin(T);
+    surf(X, Y, Z);
+    title('Superficie de revolución');
+    axis equal;
+    % grid on;
+    % subplot(1,2,1)
+    % axis equal;
+    % subplot(1,2,2)
+    % axis equal;
+
+end
+
