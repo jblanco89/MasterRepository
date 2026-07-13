@@ -1,0 +1,7 @@
+# Datasets
+**/*.csv
+
+# Results and outputs
+**/results/
+**/Resultados/
+**/output/
