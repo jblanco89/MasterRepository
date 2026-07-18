@@ -15,17 +15,17 @@ Welcome to the Applied Numerical Methods II course repository for Term 2. This c
 3. [**Lessons 4, 5 & 6: Finite Difference Methods for BVPs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%204%205%20and%206/)
    - Finite difference approaches and PDE fundamentals.
 
-4. [**Lesson 7: Elliptic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%207/)
-   - Numerical methods for elliptic partial differential equations.
-
-5. [**Lesson 8: Parabolic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%208/)
-   - Numerical methods for parabolic partial differential equations.
-
-6. [**Lesson 9: Hyperbolic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%209/)
+4. [**Lesson 7: Hyperbolic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%207/)
    - Numerical methods for hyperbolic partial differential equations.
 
-7. [**Lesson 10: Advanced PDE Topics**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%2010/)
-   - Further techniques in partial differential equations.
+5. [**Lesson 8: Elliptic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%208/)
+   - Numerical methods for elliptic partial differential equations.
+
+6. [**Lesson 9: Finite Elements**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%209/)
+   - Introduction to the finite element method.
+
+7. [**Lesson 10: Finite Elements II**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%2010/)
+   - Advanced topics in finite element methods.
 
 ### Matlab Implementation
 
