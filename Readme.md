@@ -36,7 +36,7 @@ Welcome to the repository for my Master's studies in Mathematical Engineering an
 
 ### 2. Term 2
 
-- **Course 1:** [Applied Numerical Methods II](/Term%202/Applied%20Numerical%20Methods%20II/Readme_ANM2.md)
+- **Course 1:** [Applied Numerical Methods II](/Term%202/Applied%20Numerical%20Methods%20II/Readme.md)
   - Advanced numerical methods for solving boundary value problems (BVPs) and partial differential equations (PDEs). Includes:
     - [Assignments](/Term%202/Applied%20Numerical%20Methods%20II/Assigments/): Group tasks and problem sets on finite differences and shooting methods.
     - [Final Exam](/Term%202/Applied%20Numerical%20Methods%20II/FinalExam/): Exam solutions covering BVPs, PDEs (elliptic, hyperbolic, parabolic), and numerical methods.
