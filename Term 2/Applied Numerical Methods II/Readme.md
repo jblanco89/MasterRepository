@@ -6,26 +6,26 @@ Welcome to the Applied Numerical Methods II course repository for Term 2. This c
 
 ### Lectures
 
-1. [**Lesson 2: Nonlinear Equations**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%202/)
-   - Numerical methods for solving nonlinear equations.
+1. [**Lesson 2: Boundary Value Problems**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%202/)
+   - Introduction to BVPs and foundational concepts.
 
-2. [**Lesson 3: Root Finding for Systems**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%203/)
-   - Techniques for solving systems of nonlinear equations.
+2. [**Lesson 3: Shooting Methods**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%203/)
+   - Shooting techniques for solving BVPs.
 
-3. [**Lessons 4, 5 & 6: Boundary Value Problems**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%204%205%20and%206/)
-   - Introduction to BVPs and numerical approaches.
+3. [**Lessons 4, 5 & 6: Finite Difference Methods for BVPs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%204%205%20and%206/)
+   - Finite difference approaches and PDE fundamentals.
 
-4. [**Lesson 7: Shooting Method**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%207/)
-   - Shooting technique for solving BVPs.
+4. [**Lesson 7: Elliptic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%207/)
+   - Numerical methods for elliptic partial differential equations.
 
-5. [**Lesson 8: Finite Difference Method**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%208/)
-   - Finite difference approaches for BVPs.
+5. [**Lesson 8: Parabolic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%208/)
+   - Numerical methods for parabolic partial differential equations.
 
-6. [**Lesson 9: Partial Differential Equations**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%209/)
-   - Numerical methods for PDEs (elliptic, hyperbolic, parabolic).
+6. [**Lesson 9: Hyperbolic PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%209/)
+   - Numerical methods for hyperbolic partial differential equations.
 
-7. [**Lesson 10: Advanced Topics in PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%2010/)
-   - Further techniques in PDE solving.
+7. [**Lesson 10: Advanced PDE Topics**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%2010/)
+   - Further techniques in partial differential equations.
 
 ### Matlab Implementation
 
