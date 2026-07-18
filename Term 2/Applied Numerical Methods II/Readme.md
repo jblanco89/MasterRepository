@@ -1,49 +1,38 @@
-# Applied Numerical Methods I
+# Applied Numerical Methods II
 
-Welcome to the Applied Numerical Methods I course repository for Term 1. This repository contains materials related to the course, including lecture notes, assignments, and additional resources.
+Welcome to the Applied Numerical Methods II course repository for Term 2. This course covers advanced numerical methods for solving boundary value problems (BVPs), initial value problems (IVPs), and partial differential equations (PDEs).
 
 ## Course Overview
 
 ### Lectures
 
-1. [**Introduction Lecture**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Introduction/)
-   - Overview of the course and its objectives.
+1. [**Lesson 2: Nonlinear Equations**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%202/)
+   - Numerical methods for solving nonlinear equations.
 
-2. [**Lesson 1: Matlab Introduction**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%201/)
-   - Materials and resources for understanding Matlab basics.
+2. [**Lesson 3: Root Finding for Systems**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%203/)
+   - Techniques for solving systems of nonlinear equations.
 
-3. [**Lesson 2: Numeric Calculus Preliminaries**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%202/)
-   - Introduction to numeric calculus and foundational concepts.
+3. [**Lessons 4, 5 & 6: Boundary Value Problems**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%204%205%20and%206/)
+   - Introduction to BVPs and numerical approaches.
 
-4. [**Lesson 3: Interpolation**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%203/)
-   - Lecture materials covering interpolation methods.
+4. [**Lesson 7: Shooting Method**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%207/)
+   - Shooting technique for solving BVPs.
 
-5. [**Lesson 4: Numeric Differentiation**](./Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%204/)
-   - Understanding numeric differentiation techniques.
+5. [**Lesson 8: Finite Difference Method**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%208/)
+   - Finite difference approaches for BVPs.
 
-6. [**Lesson 5: Numeric Integration**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%205/)
-   - Exploring numeric integration methods.
+6. [**Lesson 9: Partial Differential Equations**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%209/)
+   - Numerical methods for PDEs (elliptic, hyperbolic, parabolic).
 
-7. [**Lesson 6: Initial Values Problem and ODE**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%206/)
-   - Lecture content on solving initial values problems and ordinary differential equations.
-
-8. [**Lesson 7: Initial Values Problem and ODE II**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%207/)
-   - Continued exploration of initial values problems and ODEs.
-
-9. [**Lesson 8: Linear Equation Systems**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%208/)
-   - Materials related to solving linear equation systems.
-
-10. [**Lesson 9: Nonlinear Equations**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%209/)
-    - Understanding methods for solving nonlinear equations.
-
-11. [**Lesson 10: Nonlinear Equations Systems**](/Term%201/Applied%20Numerical%20Methods%20I/Lectures/Lesson%2010/)
-    - Exploring techniques for solving systems of nonlinear equations.
-
+7. [**Lesson 10: Advanced Topics in PDEs**](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/Lesson%2010/)
+   - Further techniques in PDE solving.
 
 ### Matlab Implementation
 
-- [**Matlab Folder**](/Term%201/Applied%20Numerical%20Methods%20I/Matlab/)
-  - Implementation code and resources related to Matlab.
+- [**Matlab Folder**](/Term%202/Applied%20Numerical%20Methods%20II/Matlab/)
+  - BVP solvers: Shooting and Finite Difference methods (linear/nonlinear, Dirichlet/Non-Dirichlet boundary conditions)
+  - IVP solvers: Adams-Bashforth and Heun methods for systems
+  - PDE solvers: Elliptic, hyperbolic, and parabolic equations
 
 ## How to Navigate
 
@@ -53,6 +42,7 @@ Welcome to the Applied Numerical Methods I course repository for Term 1. This re
 If you have any questions or need clarification on any topic, don't hesitate to reach out!
 
 Happy journey! 🚀
+
 ---
 
 **[Back to Contents](/Readme.md)**
