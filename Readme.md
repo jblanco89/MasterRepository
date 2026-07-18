@@ -4,7 +4,7 @@
 
 ## Overview
 
-Welcome to the repository for my Master's studies in Mathematical Engineering and Computer Science at the International University of La Rioja, Spain. This repository serves as a comprehensive collection of my notes, class materials, presentations, and activities from the first term.
+Welcome to the repository for my Master's studies in Mathematical Engineering and Computer Science at the International University of La Rioja, Spain. This repository serves as a comprehensive collection of my notes, class materials, presentations, and activities from all four terms of the program.
 
 ## Contents
 
@@ -37,12 +37,12 @@ Welcome to the repository for my Master's studies in Mathematical Engineering an
 ### 2. Term 2
 
 - **Course 1:** [Applied Numerical Methods II](/Term%202/Applied%20Numerical%20Methods%20II/Readme_ANM2.md)
-  - Advanced numerical methods for solving boundary value problems (BVPs) using shooting and finite difference methods. Includes:
+  - Advanced numerical methods for solving boundary value problems (BVPs) and partial differential equations (PDEs). Includes:
     - [Assignments](/Term%202/Applied%20Numerical%20Methods%20II/Assigments/): Group tasks and problem sets on finite differences and shooting methods.
-    - [Final Exam](/Term%202/Applied%20Numerical%20Methods%20II/FinalExam/): Exam solutions covering BVPs, finite difference methods, and parabolic PDEs.
+    - [Final Exam](/Term%202/Applied%20Numerical%20Methods%20II/FinalExam/): Exam solutions covering BVPs, PDEs (elliptic, hyperbolic, parabolic), and numerical methods.
     - [Lectures](/Term%202/Applied%20Numerical%20Methods%20II/Lectures/): Lesson materials organized by topic (Lessons 2-10).
     - [Lessons](/Term%202/Applied%20Numerical%20Methods%20II/Lessons/): Supplementary lesson PDFs and resources.
-    - [Matlab code](/Term%202/Applied%20Numerical%20Methods%20II/Matlab/): Implementation scripts for BVP methods, IVP methods, and lesson scripts.
+    - [Matlab code](/Term%202/Applied%20Numerical%20Methods%20II/Matlab/): BVP implementations (shooting & finite difference, linear/nonlinear by boundary type), IVP solvers (Adams-Bashforth, Heun), and PDE solvers (elliptic, hyperbolic, parabolic).
 
 - **Course 2:** [Stochastic Differential Equations](/Term%202/Stochastic%20Differential%20Equations/)
   - Theory and applications of stochastic differential equations and stochastic processes. Includes:
