@@ -85,7 +85,8 @@ Welcome to the repository for my Master's studies in Mathematical Engineering an
 
 ### 4. Term 4
 
-- Courses and course materials will be added as the term progresses.
+- **Master's Thesis:** [DQ-LLM-MD](https://github.com/jblanco89/DQ-LLM-MD)
+  - Research thesis on Data Quality for Large Language Models in Mathematical Discovery.
 
 ## How to Use
 
